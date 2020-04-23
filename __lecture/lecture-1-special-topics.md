@@ -57,6 +57,7 @@ There are many ways of going about this.
 
 <img src='./assets/user-type-select.gif' />
 
+simple in dev, but not secure
 ---
 
 ### Option 2 - Provide a passKey of some sort
@@ -65,10 +66,12 @@ import passkeyExample from './assets/passkey-example.png';
 
 <img src='./assets/passkey-example.png' />
 
+same key for everyone and can be shared
 ---
 
 ### Option 3 - Filter based on email
-
+you have to whitelist manually,
+by hand
 ---
 
 ### Option 4 - Provide a url
@@ -78,10 +81,12 @@ Provide a `url` with query params that contain a non-recognizable string.
 This could become complicated.
 
 1. All users register the same way.
-2. An admin could invite a user to become an admin.
+2. An admin could invite a user to become an admin. <!-- this could be a good idea for new admins -->
 3. System generates a `url` with a query string
 4. Sends it to user's email.
 5. User clicks on it and his/her profile is now flagged as admin.
+
+go with option 1 or 2 to make it a little more easy
 
 ---
 

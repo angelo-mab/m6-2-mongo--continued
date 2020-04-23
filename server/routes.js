@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const { getSeats, handleBooking } = require('./handlers');
 // Code that is generating the seats.
 // ----------------------------------
 const seats = {};
@@ -14,28 +14,33 @@ for (let r = 0; r < row.length; r++) {
 }
 // ----------------------------------
 
-router.get('/api/seat-availability', (req, res) => {
-  return res.json({
-    seats: seats,
-    numOfRows: 8,
-    seatsPerRow: 12,
-  });
-});
+// router.get('/api/seat-availability', (req, res) => {
+  
+//   return res.json({
+//     seats: seats,
+//     numOfRows: 8,
+//     seatsPerRow: 12,
+//   });
+// });
 
-router.post('/api/book-seat', async (req, res) => {
-  const { seatId, creditCard, expiration } = req.body;
+router.get('/api/seat-availability', getSeats);
 
-  if (!creditCard || !expiration) {
-    return res.status(400).json({
-      status: 400,
-      message: 'Please provide credit card information!',
-    });
-  }
+router.post('/api/book-seat', handleBooking);
 
-  return res.status(200).json({
-    status: 200,
-    success: true,
-  });
-});
+// router.post('/api/book-seat', async (req, res) => {
+//   const { seatId, creditCard, expiration } = req.body;
+
+//   if (!creditCard || !expiration) {
+//     return res.status(400).json({
+//       status: 400,
+//       message: 'Please provide credit card information!',
+//     });
+//   }
+
+//   return res.status(200).json({
+//     status: 200,
+//     success: true,
+//   });
+// });
 
 module.exports = router;
